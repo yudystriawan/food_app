@@ -8,12 +8,12 @@
 
 import 'package:auto_route/auto_route.dart';
 
-import '../common/general_page.dart';
+import '../pages/sign_in/sign_in_page.dart';
 
 class Routes {
-  static const String generalPage = '/';
+  static const String signInPage = '/';
   static const all = <String>{
-    generalPage,
+    signInPage,
   };
 }
 
@@ -21,14 +21,14 @@ class Router extends RouterBase {
   @override
   List<RouteDef> get routes => _routes;
   final _routes = <RouteDef>[
-    RouteDef(Routes.generalPage, page: GeneralPage),
+    RouteDef(Routes.signInPage, page: SignInPage),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
   final _pagesMap = <Type, AutoRouteFactory>{
-    GeneralPage: (data) {
+    SignInPage: (data) {
       return buildAdaptivePageRoute<dynamic>(
-        builder: (context) => const GeneralPage(),
+        builder: (context) => const SignInPage(),
         settings: data,
       );
     },

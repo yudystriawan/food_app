@@ -17,6 +17,7 @@ class AppWidget extends StatelessWidget {
             primarySwatch: Colors.blue,
             visualDensity: VisualDensity.adaptivePlatformDensity,
             textTheme: textTheme,
+            buttonTheme: buttonTheme,
           ),
           child: child,
         ),

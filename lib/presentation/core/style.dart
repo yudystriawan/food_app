@@ -29,3 +29,11 @@ final textTheme = TextTheme(
   overline: GoogleFonts.poppins(
       fontSize: 10, fontWeight: FontWeight.w400, letterSpacing: 1.5),
 );
+
+final buttonTheme = ButtonThemeData(
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(8),
+  ),
+  height: 45,
+  minWidth: 168,
+);

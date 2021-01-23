@@ -9,7 +9,7 @@ class GeneralPage extends StatelessWidget {
     this.subtitle = 'Subtitle',
     this.onBackButtonPressed,
     this.child,
-    this.backColor = Colors.grey,
+    this.backColor = Colors.white,
   }) : super(key: key);
 
   final String title;
@@ -23,12 +23,10 @@ class GeneralPage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Container(
-            color: Colors.white,
-          ),
+          Container(color: Colors.white),
           SafeArea(
             child: Container(
-              color: backColor ?? Colors.amber,
+              color: backColor,
             ),
           ),
           SafeArea(
@@ -37,7 +35,6 @@ class GeneralPage extends StatelessWidget {
                 Column(
                   children: [
                     Container(
-                      margin: const EdgeInsets.only(bottom: defaultMargin),
                       padding:
                           const EdgeInsets.symmetric(horizontal: defaultMargin),
                       width: double.infinity,
@@ -47,6 +44,8 @@ class GeneralPage extends StatelessWidget {
                         children: [
                           if (onBackButtonPressed != null)
                             Container(
+                              width: 24,
+                              height: 24,
                               margin:
                                   const EdgeInsets.only(right: defaultMargin),
                               decoration: BoxDecoration(
@@ -74,6 +73,11 @@ class GeneralPage extends StatelessWidget {
                           ),
                         ],
                       ),
+                    ),
+                    Container(
+                      height: defaultMargin,
+                      width: double.infinity,
+                      color: Colors.grey[50],
                     ),
                     child ?? const SizedBox(),
                   ],
