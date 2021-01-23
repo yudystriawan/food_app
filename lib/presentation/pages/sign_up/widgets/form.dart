@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:food_app/helpers/images.gen.dart';
 import 'package:food_app/presentation/common/field_info.dart';
 import 'package:food_app/presentation/core/style.dart';
+import 'package:food_app/presentation/routes/routes.gr.dart';
 
 import 'email_field.dart';
 import 'name_field.dart';
@@ -47,7 +48,7 @@ class SignUpForm extends StatelessWidget {
             margin: const EdgeInsets.only(top: 24),
             padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
             child: RaisedButton(
-              onPressed: () => ExtendedNavigator.of(context).pop(),
+              onPressed: () => ExtendedNavigator.of(context).push(Routes.addressPage),
               child: Text(
                 'Continue',
                 style: Theme.of(context)
