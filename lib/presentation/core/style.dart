@@ -37,3 +37,8 @@ final buttonTheme = ButtonThemeData(
   height: 45,
   minWidth: 168,
 );
+
+const inputDecorationTheme = InputDecorationTheme(
+  border: OutlineInputBorder(),
+  isDense: true,
+);

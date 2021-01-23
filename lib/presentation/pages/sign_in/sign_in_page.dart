@@ -9,7 +9,7 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const GeneralPage(
       title: 'Sign In',
-      subtitle: 'Find your meal.',
+      subtitle: 'Find your meal',
       child: SignInForm(),
     );
   }

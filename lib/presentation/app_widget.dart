@@ -10,7 +10,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Food App",
-      builder: ExtendedNavigator.builder(
+      builder: ExtendedNavigator.builder(                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
         router: app_router.Router(),
         builder: (context, child) => Theme(
           data: ThemeData(
@@ -18,6 +18,7 @@ class AppWidget extends StatelessWidget {
             visualDensity: VisualDensity.adaptivePlatformDensity,
             textTheme: textTheme,
             buttonTheme: buttonTheme,
+            inputDecorationTheme: inputDecorationTheme,
           ),
           child: child,
         ),
