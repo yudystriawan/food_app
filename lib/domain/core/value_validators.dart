@@ -14,7 +14,7 @@ Either<ValueFailure<String>, String> validateEmailAddress(String input) {
 Either<ValueFailure<String>, String> validatePassword(String input) {
   const pattern =
       r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
-      
+
   final regExp = RegExp(pattern);
   if (regExp.hasMatch(input)) {
     return right(input);
@@ -69,4 +69,18 @@ Either<ValueFailure<String>, String> validateStringUrl(String input) {
   }
 }
 
-
+Either<ValueFailure<double>, double> validateRate(
+  double input,
+  double max,
+  double min,
+) {
+  if (input >= min && input <= max) {
+    return right(input);
+  } else {
+    return left(ValueFailure.invalidRate(
+      failedValue: input,
+      min: min,
+      max: max,
+    ));
+  }
+}
