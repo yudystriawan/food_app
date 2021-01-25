@@ -32,7 +32,7 @@ class SignInForm extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
             child: RaisedButton(
-              onPressed: () {},
+              onPressed: () => ExtendedNavigator.of(context).push(Routes.mainPage),
               child: Text(
                 'Sign In',
                 style: Theme.of(context)
