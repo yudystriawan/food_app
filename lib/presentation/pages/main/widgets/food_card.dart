@@ -15,8 +15,8 @@ class FoodCard extends StatelessWidget {
         width: 200,
         height: 210,
         child: Column(
-          children: [
-            const RatingStars(rate: 3.5),
+          children: const [
+            RatingStars(rate: 3.5),
           ],
         ),
       ),
