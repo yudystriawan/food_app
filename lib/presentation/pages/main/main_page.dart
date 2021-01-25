@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/presentation/common/bottom_nav_bar.dart';
+import 'package:food_app/presentation/pages/main/pages/food_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key key}) : super(key: key);
@@ -40,7 +41,7 @@ class _MainPageState extends State<MainPage> {
               },
               children: const [
                 Center(
-                  child: Text('HOME'),
+                  child: FoodPage(),
                 ),
                 Center(
                   child: Text('ORDER'),
