@@ -151,7 +151,7 @@ class __$FoodCopyWithImpl<$Res> extends _$FoodCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_Food implements _Food {
+class _$_Food extends _Food {
   const _$_Food(
       {@required this.id,
       @required this.image,
@@ -166,7 +166,8 @@ class _$_Food implements _Food {
         assert(description != null),
         assert(ingredients != null),
         assert(price != null),
-        assert(rate != null);
+        assert(rate != null),
+        super._();
 
   @override
   final int id;
@@ -227,7 +228,8 @@ class _$_Food implements _Food {
       __$FoodCopyWithImpl<_Food>(this, _$identity);
 }
 
-abstract class _Food implements Food {
+abstract class _Food extends Food {
+  const _Food._() : super._();
   const factory _Food(
       {@required int id,
       @required FoodPicture image,

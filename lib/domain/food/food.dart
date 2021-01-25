@@ -7,6 +7,8 @@ part 'food.freezed.dart';
 
 @freezed
 abstract class Food with _$Food {
+  const Food._();
+  
   const factory Food({
     @required int id,
     @required FoodPicture image,
