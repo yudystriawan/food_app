@@ -1,8 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/presentation/common/bottom_nav_bar.dart';
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
   const MainPage({Key key}) : super(key: key);
+
+  @override
+  _MainPageState createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  int _selectedPage;
+  PageController _pageController;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedPage = 0;
+    _pageController = PageController();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,15 +30,37 @@ class MainPage extends StatelessWidget {
               color: Colors.grey[50],
             ),
           ),
-          const SafeArea(
-            child: Center(
-              child: Text('body'),
+          SafeArea(
+            child: PageView(
+              controller: _pageController,
+              onPageChanged: (value) {
+                setState(() {
+                  _selectedPage = value;
+                });
+              },
+              children: const [
+                Center(
+                  child: Text('HOME'),
+                ),
+                Center(
+                  child: Text('ORDER'),
+                ),
+                Center(
+                  child: Text('PROFILE'),
+                ),
+              ],
             ),
           ),
-          const Align(
+          Align(
             alignment: Alignment.bottomCenter,
             child: MyBottomNavBar(
-              selectedIndex: 0,
+              selectedIndex: _selectedPage,
+              onTap: (index) {
+                setState(() {
+                  _selectedPage = index;
+                });
+                _pageController.jumpToPage(_selectedPage);
+              },
             ),
           ),
         ],
