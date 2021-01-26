@@ -5,9 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "food_app",
+            "name": "Flutter Dev",
+            "type": "dart",
             "request": "launch",
-            "type": "dart"
+            "flutterMode": "debug",
+            "program": "lib/main_dev.dart"
+        },
+        {
+            "name": "Flutter Prod",
+            "type": "dart",
+            "request": "launch",
+            "flutterMode": "release",
+            "program": "lib/main_prod.dart"
         }
     ]
 }

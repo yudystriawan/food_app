@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:kt_dart/collection.dart';
 
 import 'package:food_app/domain/food/food.dart';
@@ -12,6 +13,7 @@ part 'food_loader_bloc.freezed.dart';
 part 'food_loader_event.dart';
 part 'food_loader_state.dart';
 
+@injectable
 class FoodLoaderBloc extends Bloc<FoodLoaderEvent, FoodLoaderState> {
   FoodLoaderBloc(
     this._foodRepository,

@@ -31,6 +31,7 @@ dependencies:
   freezed_annotation: ^0.12.0
   get_it: ^5.0.4
   google_fonts: ^1.1.1
+  injectable: ^1.0.7
   kt_dart: ^0.8.0
   string_validator: ^0.1.4
 
