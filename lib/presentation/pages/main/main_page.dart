@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_app/application/food/loader/food_loader_bloc.dart';
+import 'package:food_app/injection.dart';
 import 'package:food_app/presentation/common/bottom_nav_bar.dart';
 import 'package:food_app/presentation/pages/main/pages/food_page.dart';
 
@@ -39,14 +42,17 @@ class _MainPageState extends State<MainPage> {
                   _selectedPage = value;
                 });
               },
-              children: const [
-                Center(
-                  child: FoodPage(),
+              children: [
+                BlocProvider(
+                  create: (context) =>  getIt<FoodLoaderBloc>()..add(const FoodLoaderEvent.started()),
+                  child: const Center(
+                    child: FoodPage(),
+                  ),
                 ),
-                Center(
+                const Center(
                   child: Text('ORDER'),
                 ),
-                Center(
+                const Center(
                   child: Text('PROFILE'),
                 ),
               ],
