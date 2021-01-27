@@ -18,7 +18,10 @@ class FoodCard extends StatelessWidget {
     return GestureDetector(
       onTap: () => ExtendedNavigator.of(context).push(
         Routes.foodDetailPage,
-        arguments: FoodDetailPageArguments(food: food),
+        arguments: FoodDetailPageArguments(
+          food: food,
+          onBackPressed: () => ExtendedNavigator.of(context).pop(),
+        ),
       ),
       child: Card(
         shape: RoundedRectangleBorder(
