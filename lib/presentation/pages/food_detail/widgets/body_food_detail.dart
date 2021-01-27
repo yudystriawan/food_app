@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:food_app/domain/food/food.dart';
+import 'package:food_app/presentation/pages/food_detail/widgets/content_food_detail.dart';
 import 'package:food_app/presentation/pages/food_detail/widgets/header_food_detail.dart';
+import 'package:food_app/presentation/pages/food_detail/widgets/total_price_info.dart';
 
 class BodyFoodDetail extends StatelessWidget {
   const BodyFoodDetail({
@@ -31,6 +33,14 @@ class BodyFoodDetail extends StatelessWidget {
           HeaderFoodDetail(
             foodName: food.name.getOrElse('Empty'),
             foodRate: food.rate.getOrElse(0),
+          ),
+          ContentFoodDetail(
+            foodDescription: food.description.getOrElse('Empty'),
+            foodIngredients: food.ingredients.getOrElse('Empty'),
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 18),
+            child: const TotalPriceInfo(),
           ),
         ],
       ),

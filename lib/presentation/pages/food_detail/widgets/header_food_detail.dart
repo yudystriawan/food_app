@@ -18,16 +18,18 @@ class HeaderFoodDetail extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              foodName,
-              style: Theme.of(context).textTheme.headline6,
-            ),
-            const SizedBox(height: 6),
-            RatingStars(rate: foodRate),
-          ],
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                foodName,
+                style: Theme.of(context).textTheme.headline6,
+              ),
+              const SizedBox(height: 6),
+              RatingStars(rate: foodRate),
+            ],
+          ),
         ),
         const QuantityButton(),
       ],
