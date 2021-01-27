@@ -77,7 +77,7 @@ class Router extends RouterBase {
           key: args.key,
           onBackPressed: args.onBackPressed,
           food: args.food,
-        ),
+        ).wrappedRoute(context),
         settings: data,
       );
     },

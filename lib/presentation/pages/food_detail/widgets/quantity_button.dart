@@ -1,20 +1,29 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_app/application/transaction/form/transaction_form_bloc.dart';
 import 'package:food_app/helpers/images.gen.dart';
 
-class QuantityButton extends HookWidget {
+class QuantityButton extends StatelessWidget {
   const QuantityButton({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final quantity = useState(0);
     return Row(
       children: [
         GestureDetector(
           onTap: () {
-            quantity.value = max(0, quantity.value - 1);
+            final tempQuantity = context
+                .read<TransactionFormBloc>()
+                .state
+                .transaction
+                .quantity
+                .getOrElse(0);
+            final value = max(0, tempQuantity - 1);
+            context
+                .read<TransactionFormBloc>()
+                .add(TransactionFormEvent.quantityChanged(value.toInt()));
           },
           child: Container(
             width: 26,
@@ -29,13 +38,28 @@ class QuantityButton extends HookWidget {
         SizedBox(
           width: 50,
           child: Text(
-            quantity.value.toString(),
+            context
+                .watch<TransactionFormBloc>()
+                .state
+                .transaction
+                .quantity
+                .getOrElse(0)
+                .toString(),
             textAlign: TextAlign.center,
           ),
         ),
         GestureDetector(
           onTap: () {
-            quantity.value = min(999, quantity.value + 1);
+            final tempQuantity = context
+                .read<TransactionFormBloc>()
+                .state
+                .transaction
+                .quantity
+                .getOrElse(0);
+            final value = min(999, tempQuantity + 1);
+            context
+                .read<TransactionFormBloc>()
+                .add(TransactionFormEvent.quantityChanged(value.toInt()));
           },
           child: Container(
             width: 26,

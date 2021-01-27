@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/application/transaction/form/transaction_form_bloc.dart';
 import 'package:food_app/domain/core/app_functions.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TotalPriceInfo extends StatelessWidget {
   const TotalPriceInfo({Key key}) : super(key: key);
@@ -20,7 +22,13 @@ class TotalPriceInfo extends StatelessWidget {
                   .copyWith(color: Colors.black, fontWeight: FontWeight.bold),
             ),
             Text(
-              999999.idrCurrency(),
+              context
+                  .watch<TransactionFormBloc>()
+                  .state
+                  .transaction
+                  .total
+                  .getOrElse(0)
+                  .idrCurrency(),
               style: Theme.of(context)
                   .textTheme
                   .headline6

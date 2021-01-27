@@ -1,11 +1,15 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_app/application/transaction/form/transaction_form_bloc.dart';
 
 import 'package:food_app/domain/food/food.dart';
+import 'package:food_app/injection.dart';
 import 'package:food_app/presentation/pages/food_detail/widgets/back_button.dart';
 import 'package:food_app/presentation/pages/food_detail/widgets/body_food_detail.dart';
 import 'package:food_app/presentation/pages/food_detail/widgets/food_image.dart';
 
-class FoodDetailPage extends StatelessWidget {
+class FoodDetailPage extends StatelessWidget implements AutoRouteWrapper {
   const FoodDetailPage({
     Key key,
     this.onBackPressed,
@@ -41,4 +45,11 @@ class FoodDetailPage extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  Widget wrappedRoute(BuildContext context) => BlocProvider(
+        create: (context) => getIt<TransactionFormBloc>()
+          ..add(TransactionFormEvent.foodChanged(food)),
+        child: this,
+      );
 }

@@ -12,6 +12,7 @@ import 'infrastructure/food/food_repository.dart';
 import 'domain/food/i_food_repository.dart';
 import 'domain/transaction/i_transaction_repository.dart';
 import 'domain/user/i_user_repository.dart';
+import 'application/transaction/form/transaction_form_bloc.dart';
 import 'application/transaction/loader/transaction_loader_bloc.dart';
 import 'infrastructure/transaction/transaction_repository.dart';
 import 'infrastructure/user/user_repository.dart';
@@ -28,6 +29,8 @@ GetIt $initGetIt(
   gh.factory<IFoodRepository>(() => FoodRepository());
   gh.factory<ITransactionRepository>(() => TransactionRepository());
   gh.factory<IUserRepository>(() => UserRepository());
+  gh.factory<TransactionFormBloc>(
+      () => TransactionFormBloc(get<ITransactionRepository>()));
   gh.factory<TransactionLoaderBloc>(
       () => TransactionLoaderBloc(get<ITransactionRepository>()));
   gh.factory<FoodLoaderBloc>(() => FoodLoaderBloc(get<IFoodRepository>()));
