@@ -7,8 +7,11 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
 
+import '../../domain/food/food.dart';
 import '../pages/address/address_page.dart';
+import '../pages/food_detail/food_detail_page.dart';
 import '../pages/main/main_page.dart';
 import '../pages/sign_in/sign_in_page.dart';
 import '../pages/sign_up/sign_up_page.dart';
@@ -18,11 +21,13 @@ class Routes {
   static const String signUpPage = '/sign-up-page';
   static const String addressPage = '/address-page';
   static const String mainPage = '/main-page';
+  static const String foodDetailPage = '/food-detail-page';
   static const all = <String>{
     signInPage,
     signUpPage,
     addressPage,
     mainPage,
+    foodDetailPage,
   };
 }
 
@@ -34,6 +39,7 @@ class Router extends RouterBase {
     RouteDef(Routes.signUpPage, page: SignUpPage),
     RouteDef(Routes.addressPage, page: AddressPage),
     RouteDef(Routes.mainPage, page: MainPage),
+    RouteDef(Routes.foodDetailPage, page: FoodDetailPage),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -62,5 +68,30 @@ class Router extends RouterBase {
         settings: data,
       );
     },
+    FoodDetailPage: (data) {
+      final args = data.getArgs<FoodDetailPageArguments>(
+        orElse: () => FoodDetailPageArguments(),
+      );
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => FoodDetailPage(
+          key: args.key,
+          onBackPressed: args.onBackPressed,
+          food: args.food,
+        ),
+        settings: data,
+      );
+    },
   };
+}
+
+/// ************************************************************************
+/// Arguments holder classes
+/// *************************************************************************
+
+/// FoodDetailPage arguments holder class
+class FoodDetailPageArguments {
+  final Key key;
+  final Function onBackPressed;
+  final Food food;
+  FoodDetailPageArguments({this.key, this.onBackPressed, this.food});
 }
