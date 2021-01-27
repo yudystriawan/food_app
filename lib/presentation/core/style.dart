@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 const double defaultMargin = 24;
+const double bottomNavHeight = 60;
 
 final textTheme = TextTheme(
   headline1: GoogleFonts.poppins(

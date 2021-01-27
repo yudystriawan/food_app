@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app/application/food/loader/food_loader_bloc.dart';
 import 'package:food_app/presentation/common/tab_bar.dart';
+import 'package:food_app/presentation/core/style.dart';
 import 'package:food_app/presentation/pages/main/widgets/food_card.dart';
 import 'package:food_app/presentation/pages/main/widgets/food_header.dart';
+import 'package:food_app/presentation/pages/main/widgets/food_list_item.dart';
 
 class FoodPage extends StatefulWidget {
   const FoodPage({Key key}) : super(key: key);
@@ -26,6 +28,7 @@ class _FoodPageState extends State<FoodPage> {
     return ListView(
       children: [
         Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             const FoodHeader(),
             SizedBox(
@@ -68,21 +71,33 @@ class _FoodPageState extends State<FoodPage> {
                 ],
               ),
             ),
-            const SizedBox(height: 16),
-            Builder(
-              builder: (_) {
-                final body = (_selectedIndex == 0)
-                    ? 'New Taste Body'
-                    : (_selectedIndex == 1)
-                        ? 'Popular Body'
-                        : 'Recommended Body';
-                return Center(
-                  child: Text(body),
-                );
-              },
-            )
+            const SizedBox(height: 8),
+            Container(
+              color: Colors.white,
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              child: BlocBuilder<FoodLoaderBloc, FoodLoaderState>(
+                builder: (context, state) {
+                  return state.maybeMap(
+                    orElse: () => const SizedBox(),
+                    loadSuccess: (state) => ListView.separated(
+                      physics: const ClampingScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: state.listFood.size,
+                      separatorBuilder: (_, __) {
+                        return const SizedBox(height: 4);
+                      },
+                      itemBuilder: (BuildContext context, int index) {
+                        final food = state.listFood[index];
+                        return FoodListItem(food: food);
+                      },
+                    ),
+                  );
+                },
+              ),
+            ),
           ],
-        )
+        ),
+        const SizedBox(height: bottomNavHeight),
       ],
     );
   }

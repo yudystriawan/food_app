@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:food_app/helpers/images.gen.dart';
+import 'package:food_app/presentation/core/style.dart';
 
 class MyBottomNavBar extends StatelessWidget {
   const MyBottomNavBar({
@@ -15,13 +16,12 @@ class MyBottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
+      height: bottomNavHeight,
       width: double.infinity,
       color: Colors.white,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children:
-        [
+        children: [
           GestureDetector(
             onTap: () {
               if (onTap != null) {
