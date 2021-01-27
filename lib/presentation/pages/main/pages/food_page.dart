@@ -16,7 +16,7 @@ class _FoodPageState extends State<FoodPage> {
   int _selectedIndex;
 
   @override
-  void initState() { 
+  void initState() {
     super.initState();
     _selectedIndex = 0;
   }
@@ -53,8 +53,8 @@ class _FoodPageState extends State<FoodPage> {
               child: Column(
                 children: [
                   MyTabBar(
-                    titles: [
-                      'New',
+                    titles: const [
+                      'New Taste',
                       'Popular',
                       'Recommended',
                     ],
@@ -67,6 +67,19 @@ class _FoodPageState extends State<FoodPage> {
                   )
                 ],
               ),
+            ),
+            const SizedBox(height: 16),
+            Builder(
+              builder: (_) {
+                final body = (_selectedIndex == 0)
+                    ? 'New Taste Body'
+                    : (_selectedIndex == 1)
+                        ? 'Popular Body'
+                        : 'Recommended Body';
+                return Center(
+                  child: Text(body),
+                );
+              },
             )
           ],
         )

@@ -14,27 +14,39 @@ class MyTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 50,
       child: Stack(
         children: [
           Container(
-            padding: const EdgeInsets.only(top: 48),
+            margin: const EdgeInsets.only(top: 48),
             height: 1,
-            color: Colors.white,
+            color: Colors.grey,
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: titles
                 .map((title) => Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          title,
-                          style: Theme.of(context).textTheme.bodyText1.copyWith(
-                                fontWeight:
-                                    (titles.indexOf(title) == selectedIndex)
-                                        ? FontWeight.w500
-                                        : FontWeight.w300,
-                              ),
+                        GestureDetector(
+                          onTap: () {
+                            if (onTap != null) {
+                              onTap(titles.indexOf(title));
+                            }
+                          },
+                          child: Text(
+                            title,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline6
+                                .copyWith(
+                                  fontWeight:
+                                      (titles.indexOf(title) == selectedIndex)
+                                          ? FontWeight.w500
+                                          : FontWeight.w300,
+                                ),
+                          ),
                         ),
                         Container(
                           width: 40,
