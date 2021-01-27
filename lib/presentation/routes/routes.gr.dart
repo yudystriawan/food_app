@@ -10,9 +10,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../domain/food/food.dart';
+import '../../domain/transaction/transaction.dart';
 import '../pages/address/address_page.dart';
 import '../pages/food_detail/food_detail_page.dart';
 import '../pages/main/main_page.dart';
+import '../pages/payment/payment_page.dart';
 import '../pages/sign_in/sign_in_page.dart';
 import '../pages/sign_up/sign_up_page.dart';
 
@@ -22,12 +24,14 @@ class Routes {
   static const String addressPage = '/address-page';
   static const String mainPage = '/main-page';
   static const String foodDetailPage = '/food-detail-page';
+  static const String paymentPage = '/payment-page';
   static const all = <String>{
     signInPage,
     signUpPage,
     addressPage,
     mainPage,
     foodDetailPage,
+    paymentPage,
   };
 }
 
@@ -40,6 +44,7 @@ class Router extends RouterBase {
     RouteDef(Routes.addressPage, page: AddressPage),
     RouteDef(Routes.mainPage, page: MainPage),
     RouteDef(Routes.foodDetailPage, page: FoodDetailPage),
+    RouteDef(Routes.paymentPage, page: PaymentPage),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -81,6 +86,16 @@ class Router extends RouterBase {
         settings: data,
       );
     },
+    PaymentPage: (data) {
+      final args = data.getArgs<PaymentPageArguments>(nullOk: false);
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => PaymentPage(
+          key: args.key,
+          transaction: args.transaction,
+        ),
+        settings: data,
+      );
+    },
   };
 }
 
@@ -94,4 +109,11 @@ class FoodDetailPageArguments {
   final Function onBackPressed;
   final Food food;
   FoodDetailPageArguments({this.key, this.onBackPressed, this.food});
+}
+
+/// PaymentPage arguments holder class
+class PaymentPageArguments {
+  final Key key;
+  final Transaction transaction;
+  PaymentPageArguments({this.key, @required this.transaction});
 }
