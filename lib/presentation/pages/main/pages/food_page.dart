@@ -1,11 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app/application/food/loader/food_loader_bloc.dart';
+import 'package:food_app/presentation/common/tab_bar.dart';
 import 'package:food_app/presentation/pages/main/widgets/food_card.dart';
 import 'package:food_app/presentation/pages/main/widgets/food_header.dart';
 
-class FoodPage extends StatelessWidget {
+class FoodPage extends StatefulWidget {
   const FoodPage({Key key}) : super(key: key);
+
+  @override
+  _FoodPageState createState() => _FoodPageState();
+}
+
+class _FoodPageState extends State<FoodPage> {
+  int _selectedIndex;
+
+  @override
+  void initState() { 
+    super.initState();
+    _selectedIndex = 0;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +47,27 @@ class FoodPage extends StatelessWidget {
                 },
               ),
             ),
+            Container(
+              width: double.infinity,
+              color: Colors.white,
+              child: Column(
+                children: [
+                  MyTabBar(
+                    titles: [
+                      'New',
+                      'Popular',
+                      'Recommended',
+                    ],
+                    selectedIndex: _selectedIndex,
+                    onTap: (index) {
+                      setState(() {
+                        _selectedIndex = index;
+                      });
+                    },
+                  )
+                ],
+              ),
+            )
           ],
         )
       ],
