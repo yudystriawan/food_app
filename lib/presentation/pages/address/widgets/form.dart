@@ -5,6 +5,7 @@ import 'package:food_app/presentation/core/style.dart';
 import 'package:food_app/presentation/pages/address/widgets/address_field.dart';
 import 'package:food_app/presentation/pages/address/widgets/city_field.dart';
 import 'package:food_app/presentation/pages/address/widgets/house_number_field.dart';
+import 'package:food_app/presentation/routes/routes.gr.dart';
 
 import 'phone_field.dart';
 
@@ -29,7 +30,8 @@ class AddressForm extends StatelessWidget {
             margin: const EdgeInsets.only(top: 24),
             padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
             child: RaisedButton(
-              onPressed: () => ExtendedNavigator.of(context).pop(),
+              onPressed: () =>
+                  ExtendedNavigator.of(context).push(Routes.successSignUpPage),
               child: Text(
                 'Sign Up Now',
                 style: Theme.of(context)

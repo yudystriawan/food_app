@@ -6,6 +6,7 @@ import 'package:food_app/presentation/core/style.dart';
 import 'package:food_app/presentation/pages/payment/widgets/content_detail.dart';
 import 'package:food_app/presentation/pages/payment/widgets/content_item.dart';
 import 'package:food_app/presentation/pages/payment/widgets/content_user.dart';
+import 'package:food_app/presentation/routes/routes.gr.dart';
 
 class PaymentPage extends StatelessWidget {
   const PaymentPage({
@@ -34,7 +35,8 @@ class PaymentPage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(top: 24),
                 child: RaisedButton(
-                  onPressed: () {},
+                  onPressed: () => ExtendedNavigator.of(context)
+                      .push(Routes.successOrderPage),
                   child: const Text('Checkout Now'),
                 ),
               ),

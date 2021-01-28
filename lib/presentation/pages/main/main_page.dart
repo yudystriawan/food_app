@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app/application/food/loader/food_loader_bloc.dart';
+import 'package:food_app/helpers/images.gen.dart';
 import 'package:food_app/injection.dart';
 import 'package:food_app/presentation/common/bottom_nav_bar.dart';
+import 'package:food_app/presentation/common/illustration_page.dart';
 import 'package:food_app/presentation/pages/main/pages/food_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -44,13 +46,21 @@ class _MainPageState extends State<MainPage> {
               },
               children: [
                 BlocProvider(
-                  create: (context) =>  getIt<FoodLoaderBloc>()..add(const FoodLoaderEvent.started()),
+                  create: (context) => getIt<FoodLoaderBloc>()
+                    ..add(const FoodLoaderEvent.started()),
                   child: const Center(
                     child: FoodPage(),
                   ),
                 ),
-                const Center(
-                  child: Text('ORDER'),
+                Center(
+                  child: IllustrationPage(
+                    title: 'Ouch! Hungry',
+                    description:
+                        'Seems like you have not\nordered any food yet.',
+                    picturePath: IMG.pictures.loveBurgerPNG,
+                    buttonText1: 'Find Foods',
+                    buttonPressed1: () {},
+                  ),
                 ),
                 const Center(
                   child: Text('PROFILE'),

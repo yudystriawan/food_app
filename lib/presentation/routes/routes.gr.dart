@@ -17,6 +17,8 @@ import '../pages/main/main_page.dart';
 import '../pages/payment/payment_page.dart';
 import '../pages/sign_in/sign_in_page.dart';
 import '../pages/sign_up/sign_up_page.dart';
+import '../pages/success_page/success_order_page.dart';
+import '../pages/success_page/success_sign_up.dart';
 
 class Routes {
   static const String signInPage = '/';
@@ -25,6 +27,8 @@ class Routes {
   static const String mainPage = '/main-page';
   static const String foodDetailPage = '/food-detail-page';
   static const String paymentPage = '/payment-page';
+  static const String successOrderPage = '/success-order-page';
+  static const String successSignUpPage = '/success-sign-up-page';
   static const all = <String>{
     signInPage,
     signUpPage,
@@ -32,6 +36,8 @@ class Routes {
     mainPage,
     foodDetailPage,
     paymentPage,
+    successOrderPage,
+    successSignUpPage,
   };
 }
 
@@ -45,6 +51,8 @@ class Router extends RouterBase {
     RouteDef(Routes.mainPage, page: MainPage),
     RouteDef(Routes.foodDetailPage, page: FoodDetailPage),
     RouteDef(Routes.paymentPage, page: PaymentPage),
+    RouteDef(Routes.successOrderPage, page: SuccessOrderPage),
+    RouteDef(Routes.successSignUpPage, page: SuccessSignUpPage),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -93,6 +101,18 @@ class Router extends RouterBase {
           key: args.key,
           transaction: args.transaction,
         ),
+        settings: data,
+      );
+    },
+    SuccessOrderPage: (data) {
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => const SuccessOrderPage(),
+        settings: data,
+      );
+    },
+    SuccessSignUpPage: (data) {
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => const SuccessSignUpPage(),
         settings: data,
       );
     },
