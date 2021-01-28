@@ -6,6 +6,7 @@ import 'package:food_app/injection.dart';
 import 'package:food_app/presentation/common/bottom_nav_bar.dart';
 import 'package:food_app/presentation/pages/main/pages/food_page.dart';
 import 'package:food_app/presentation/pages/main/pages/history_order_page.dart';
+import 'package:food_app/presentation/pages/main/pages/profile_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key key}) : super(key: key);
@@ -57,9 +58,7 @@ class _MainPageState extends State<MainPage> {
                     ..add(const TransactionLoaderEvent.started()),
                   child: const HistoryOrderPage(),
                 ),
-                const Center(
-                  child: Text('PROFILE'),
-                ),
+                const ProfilePage(),
               ],
             ),
           ),
