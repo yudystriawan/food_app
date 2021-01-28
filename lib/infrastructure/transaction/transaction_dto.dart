@@ -3,6 +3,7 @@ import 'package:food_app/domain/transaction/value_objects.dart';
 import 'package:food_app/infrastructure/food/food_dtos.dart';
 import 'package:food_app/infrastructure/user/user_dtos.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:food_app/domain/core/app_functions.dart';
 
 part 'transaction_dto.freezed.dart';
 part 'transaction_dto.g.dart';
@@ -46,39 +47,5 @@ abstract class TransactionDto with _$TransactionDto {
       status: status.toTransactionStatus(),
       user: user.toDomain(),
     );
-  }
-}
-
-extension TransactionStatusX on TransactionStatus {
-  String statusToString() {
-    switch (this) {
-      case TransactionStatus.delivered:
-        return 'delivered';
-      case TransactionStatus.onDelivery:
-        return 'on delivered';
-      case TransactionStatus.cancelled:
-        return 'cancelled';
-      case TransactionStatus.pending:
-        return 'pending';
-      default:
-        return 'initial';
-    }
-  }
-}
-
-extension StringX on String {
-  TransactionStatus toTransactionStatus() {
-    switch (this) {
-      case 'delivered':
-        return TransactionStatus.delivered;
-      case 'on delivered':
-        return TransactionStatus.onDelivery;
-      case 'cancelled':
-        return TransactionStatus.cancelled;
-      case 'pending':
-        return TransactionStatus.pending;
-      default:
-        return TransactionStatus.initial;
-    }
   }
 }

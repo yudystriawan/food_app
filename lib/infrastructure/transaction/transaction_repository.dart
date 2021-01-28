@@ -5,6 +5,7 @@ import 'package:food_app/domain/transaction/transaction_failure.dart';
 import 'package:food_app/infrastructure/food/food_repository.dart';
 import 'package:food_app/infrastructure/transaction/transaction_dto.dart';
 import 'package:food_app/infrastructure/user/user_repository.dart';
+import 'package:food_app/domain/core/app_functions.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/collection.dart';
 
